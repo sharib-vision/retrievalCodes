@@ -16,4 +16,4 @@
 
 ### Reference:
 
-[Sharib Ali, Jens Rittscher], "Efficient video indexing for monitoring disease activity and progression in the upper gastrointestinal tract", IEEE ISBI, 2019.
+Sharib Ali and Jens Rittscher, *"Efficient video indexing for monitoring disease activity and progression in the upper gastrointestinal tract"*, IEEE ISBI, 2019.
