@@ -11,3 +11,9 @@
       - change in paths.py your result and data directories
       - etc...
     
+
+
+
+### Reference:
+
+[Sharib Ali, Jens Rittscher], "Efficient video indexing for monitoring disease activity and progression in the upper gastrointestinal tract", IEEE ISBI, 2019.
