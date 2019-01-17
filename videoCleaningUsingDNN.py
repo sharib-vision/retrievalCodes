@@ -52,9 +52,11 @@ def videoCleaningWithDNN (modelFile, videoFile, useCleanVideoFlag, PROJECT_DIR, 
     
     CNN_classify_model = load_model(modelFile)
     
-    clip, (clip_fps, clip_duration, n_frames) = videoFramesExtraction.movieClipinfo(videoFile)    
-    boundingbox = videoFramesExtraction.returnBoundingBox(videoFile, 5) 
+    clip, (clip_fps, clip_duration, n_frames) = videoFramesExtraction.movieClipinfo(videoFile)
     print('frame fps:', clip_fps)
+    print('total frames:', n_frames)
+    boundingbox = videoFramesExtraction.returnBoundingBox(videoFile, 5) 
+    
     print('bounding box size', boundingbox.shape)
     
     batch_size = 1
