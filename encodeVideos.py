@@ -35,7 +35,7 @@ parser_vid = argparse.ArgumentParser()
 parser_vid.add_argument('-videoFile', type=str, default='M_01032018130721_0000000000003059_1_002_001-1', help='enter checkpoint directory')
 parser_vid.add_argument('-gpu_id', type=int, default=3, help='enter gpu number')
 parser_vid.add_argument('-useTestFlag', type=int, default=1, help='enter test case or not!')
-parser_vid.add_argument('-checkpointDir', type=int, default=1, help='enter checkpoint directory')
+parser_vid.add_argument('-checkpointDir', type=str, default='checkpoints', help='enter checkpoint directory')
 args_vid = parser_vid.parse_args()
 
 args_vid.videoFile=args_vid.videoFile+'.MP4'
