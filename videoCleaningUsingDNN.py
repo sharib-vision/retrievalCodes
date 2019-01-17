@@ -57,8 +57,6 @@ def videoCleaningWithDNN (modelFile, videoFile, useCleanVideoFlag, PROJECT_DIR, 
     print('total frames:', n_frames)
     boundingbox = videoFramesExtraction.returnBoundingBox(videoFile, 5) 
     
-    print('bounding box size', boundingbox.shape)
-    
     batch_size = 1
     # if batch is different than 1 this will not add up to the n_frames
     frame_scores = []
