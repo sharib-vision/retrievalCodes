@@ -1,0 +1,25 @@
+# this is just for checking pass 
+
+env:
+  global:
+    - DISPLAY=""
+
+language: python
+
+matrix:
+  include:
+    - python: 3.5
+      env: TOXENV=py35
+    - python: 3.6
+      env: TOXENV=py36
+
+install:
+  - pip install -r requirements.txt
+  - wget https://s3.amazonaws.com/endoscopyretrieval/retrieval_ISBI19.zip
+
+script:
+  - unzip retrieval_ISBI19.zip 
+  - bash scripts/run_retrieval_test.sh
+
+notifications:
+  email: false
