@@ -9,4 +9,5 @@ seaborn
 tifffile
 keras>=2.1.5
 moviepy
+tensorflow>=1.7.0
 
