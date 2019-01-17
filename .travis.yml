@@ -19,7 +19,7 @@ install:
 
 script:
   - unzip retrieval_ISBI19.zip 
-  - bash scripts/run_retrieval_test.sh
+  - bash scripts/run_retrieve_test.sh
 
 notifications:
   email: false
