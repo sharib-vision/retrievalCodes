@@ -33,8 +33,9 @@ parse here:
 '''
 parser_vid = argparse.ArgumentParser()
 parser_vid.add_argument('-videoFile', type=str, default='M_01032018130721_0000000000003059_1_002_001-1', help='enter checkpoint directory')
-parser_vid.add_argument('-gpu_id', type=int, default=3, help='enter checkpoint directory')
-parser_vid.add_argument('-useTestFlag', type=int, default=1, help='enter checkpoint directory')
+parser_vid.add_argument('-gpu_id', type=int, default=3, help='enter gpu number')
+parser_vid.add_argument('-useTestFlag', type=int, default=1, help='enter test case or not!')
+parser_vid.add_argument('-checkpointDir', type=int, default=1, help='enter checkpoint directory')
 args_vid = parser_vid.parse_args()
 
 args_vid.videoFile=args_vid.videoFile+'.MP4'
@@ -106,7 +107,7 @@ if runPart1:
         
         from videoCleaningUsingDNN import videoCleaningWithDNN
         
-        modelFile = os.path.join(ROOT_DIR, 'dysplasiaEndoscopy', 'binaryEndoClassifier_124_124.h5')
+        modelFile = os.path.join(ROOT_DIR, 'args.checkpointDir', 'binaryEndoClassifier_124_124.h5')
         frame_scores, nframes, cleanFrameList = videoCleaningWithDNN (modelFile, videoFile, useCleanVideo, PROJECT_DIR, outfile) 
         
         '''
@@ -195,7 +196,7 @@ else:
     print(x_train.shape)
     
     # BE_Autoencoder_124_124_ch3.h5, 33000_AE_1716_11012018-smallCNNFilters.h5
-    autoencoder = load_model(os.path.join(ROOT_DIR, 'dysplasiaEndoscopy', 'BE_Autoencoder_124_124_ch3.h5'))
+    autoencoder = load_model(os.path.join(ROOT_DIR, args.checkpointDir, 'BE_Autoencoder_124_124_ch3.h5'))
     encoder = Model(inputs=autoencoder.input, outputs=autoencoder.get_layer('encoder').output)
     
     # also saves as embedding file
