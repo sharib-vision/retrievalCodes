@@ -38,6 +38,8 @@ parser_vid.add_argument('-useTestFlag', type=int, default=1, help='enter test ca
 parser_vid.add_argument('-checkpointDir', type=str, default='checkpoints', help='enter checkpoint directory')
 args_vid = parser_vid.parse_args()
 
+
+
 args_vid.videoFile=args_vid.videoFile+'.MP4'
 
 print("arguments~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
@@ -45,7 +47,7 @@ print(args_vid.videoFile)
 print(args_vid.gpu_id)
 print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 
-gpu = 1
+gpu = 0
 
 useTest = args_vid.useTestFlag
 
@@ -72,7 +74,10 @@ if useTest:
 else:
     videoFile = os.path.join(DATA_DIR, videoFileName)
     
-patientFileName=videoFile.split('_')[1]+'_'+videoFile.split('_')[2].strip("0")
+#patientFileName=videoFile.split('_')[1]+'_'+videoFile.split('_')[2].strip("0")
+    
+outfile=videoFileName.split('.')[0] 
+patientFileName=outfile
 
 '''
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -107,7 +112,7 @@ if runPart1:
         
         from videoCleaningUsingDNN import videoCleaningWithDNN
         
-        modelFile = os.path.join(ROOT_DIR, 'args.checkpointDir', 'binaryEndoClassifier_124_124.h5')
+        modelFile = os.path.join(ROOT_DIR, args_vid.checkpointDir, 'binaryEndoClassifier_124_124.h5')
         frame_scores, nframes, cleanFrameList = videoCleaningWithDNN (modelFile, videoFile, useCleanVideo, PROJECT_DIR, outfile) 
         
         '''
@@ -133,8 +138,6 @@ if runPart1:
     save as - .npz
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 '''
-
-print('im here')
 from retrieveQuerySequences import formEmbedding
 from imageCroppingClasses import imageCropping
 
@@ -196,7 +199,8 @@ else:
     print(x_train.shape)
     
     # BE_Autoencoder_124_124_ch3.h5, 33000_AE_1716_11012018-smallCNNFilters.h5
-    autoencoder = load_model(os.path.join(ROOT_DIR, args.checkpointDir, 'BE_Autoencoder_124_124_ch3.h5'))
+    autoencoder = load_model(os.path.join(ROOT_DIR, args_vid.checkpointDir, 'BE_Autoencoder_124_124_ch3.h5'))
+    autoencoder.summary()
     encoder = Model(inputs=autoencoder.input, outputs=autoencoder.get_layer('encoder').output)
     
     # also saves as embedding file
