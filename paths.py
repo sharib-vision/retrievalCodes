@@ -13,35 +13,20 @@ this paths.py is for autoencoding of the videos
 
 
 import os
-import socket
 
-hostname = socket.gethostname()
-print(hostname)
+currentPath = os.path.abspath(os.path.dirname(__file__))
 
-localCopy = 0
+localCopy = 1
 
 if localCopy:
-    ROOT_DIR = '/Users/shariba/dataset'
-    BASE_DIR = '/Users/shariba/'
-    DATA_DIR = os.path.join(ROOT_DIR, 'dysplasiaEndoscopy', 'videos')
-    PROJECT_DIR=ROOT_DIR
-else:
-    if 'shariba' in hostname:
-        ROOT_DIR = '/Volumes/rescomp2/data'
-        BASE_DIR = '/Volumes/rescomp2/home'
-        DATA_DIR = ROOT_DIR+'/videoData/mp4FilesForEncoding'
-        PROJECT_DIR='/Volumes/rescomp2/projects/endoscopy_ALI'
-        
-    else:
-        ROOT_DIR = '/well/rittscher/users/sharib'
-        BASE_DIR = '/users/rittscher/sharib'
-        DATA_DIR = ROOT_DIR+'/videoData/mp4FilesForEncoding'
-        PROJECT_DIR='/well/rittscher/projects/endoscopy_ALI'
-        
+    ROOT_DIR = currentPath
+    DATA_DIR = os.path.join(ROOT_DIR, 'video')
+    RESULT_DIR = os.path.join(ROOT_DIR, 'retrievalResults')
+    PROJECT_DIR =  ROOT_DIR   
 
-RESULT_DIR = PROJECT_DIR + '/dysplasiaVideoEncoded'
 os.makedirs(RESULT_DIR, exist_ok=True)
 
-print('DATA_DIR: ', DATA_DIR)
+
+print('VIDEO DATA_DIR: ', DATA_DIR)
 print('RESULTS_DIR: ', RESULT_DIR)
 
