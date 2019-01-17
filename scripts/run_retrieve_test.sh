@@ -3,7 +3,7 @@
 CURRENT_DIR=`pwd`
 
 checkpointDir=checkpoints
-vidFile=M_0_712001
+vidFile=712001
 
 gpuNo=3
 
