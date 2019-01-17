@@ -40,7 +40,7 @@ args_vid = parser_vid.parse_args()
 
 
 
-args_vid.videoFile=args_vid.videoFile+'.MP4'
+args_vid.videoFile=args_vid.videoFile+'.mp4'
 
 print("arguments~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 print(args_vid.videoFile)
